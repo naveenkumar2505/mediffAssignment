@@ -1,0 +1,10 @@
+python3
+pip install django==2.1
+pip install django-filters
+
+create AssignCurd project in django...django -admin startproject AssignCurd
+create curdapp app ...python manage.py startapp curdapp
+
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver

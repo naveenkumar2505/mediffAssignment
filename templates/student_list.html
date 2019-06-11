@@ -1,0 +1,53 @@
+{% load bootstrap4 %}
+<h1 style="color: blue" class="center">Students Information</h1>
+
+<table border="1">
+<thead>
+    <tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Course</th>
+    <th>Age</th>
+    <th>Gender</th>
+    <th>View</th>
+    <th>Edit</th>
+    <th>Delete</th>
+    </tr>
+</thead>
+<tbody>
+
+    {% for student in object_list %}
+    <tr>
+    <td>{{ student.id }}</td>
+    <td>{{ student.name }}</td>
+    <td>{{ student.roll_number }}</td>
+    <td>{{ student.age }}</td>
+    <td>{{ student.gender }}</td>
+    <td><a href="{% url "student_view" student.id %}">view</a></td>
+    <td><a href="{% url "student_edit" student.id %}">edit</a></td>
+    <td><a href="{% url "student_delete" student.id %}">delete</a></td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+
+<a href="{% url "student_new" %}">New</a>
+
+<form method="get">
+    {{ filter.form  }}
+   <input type="submit" value="Search">
+
+</form>
+
+<ul>
+    {% for student in filter.qs %}
+    <li>
+        <a href="{% url 'student_list' %}">{{ student.name }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+
+
+
+
